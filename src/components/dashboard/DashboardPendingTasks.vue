@@ -1,9 +1,9 @@
 <template>
   <div class="dashboard-card pending-tasks-widget">
     <div class="card-header-row">
-      <h2>{{ $t('dashboard.tasks_to_handle') }}</h2>
+      <h2>{{ $t('i18nDashboard.dashboard.tasks_to_handle') }}</h2>
       <div class="actions-menu">
-        <button class="header-action-btn" type="button" :title="$t('dashboard.settings')" :aria-label="$t('dashboard.settings')">
+        <button class="header-action-btn" type="button" :title="$t('i18nDashboard.dashboard.settings')" :aria-label="$t('i18nDashboard.dashboard.settings')">
           <i class="fa-solid fa-sliders"></i>
         </button>
       </div>
@@ -22,8 +22,8 @@
             <i :class="task.icon"></i>
           </div>
           <div class="task-info">
-            <span class="task-name">{{ $t(`dashboard.task_items.${task.key}`) }}</span>
-            <span class="task-desc">{{ $t(`dashboard.task_items.${task.key}_desc`) }}</span>
+            <span class="task-name">{{ $t(`i18nDashboard.dashboard.task_items.${task.key}`) }}</span>
+            <span class="task-desc">{{ $t(`i18nDashboard.dashboard.task_items.${task.key}_desc`) }}</span>
           </div>
         </div>
         
@@ -58,7 +58,7 @@ const tasks = ref<PendingTask[]>([
     count: 12,
     themeClass: 'theme-blue',
     badgeClass: 'badge-red',
-    actionKey: 'dashboard.view_details'
+    actionKey: 'i18nDashboard.dashboard.view_details'
   },
   {
     key: 'pending_docs',
@@ -66,7 +66,7 @@ const tasks = ref<PendingTask[]>([
     count: 16,
     themeClass: 'theme-green',
     badgeClass: 'badge-red',
-    actionKey: 'dashboard.handle_now'
+    actionKey: 'i18nDashboard.dashboard.handle_now'
   },
   {
     key: 'approvals',
@@ -74,7 +74,7 @@ const tasks = ref<PendingTask[]>([
     count: 9,
     themeClass: 'theme-orange',
     badgeClass: 'badge-orange',
-    actionKey: 'dashboard.approve_now'
+    actionKey: 'i18nDashboard.dashboard.approve_now'
   },
   {
     key: 'assets',
@@ -82,7 +82,7 @@ const tasks = ref<PendingTask[]>([
     count: 3,
     themeClass: 'theme-blue-light',
     badgeClass: 'badge-orange',
-    actionKey: 'dashboard.check_now'
+    actionKey: 'i18nDashboard.dashboard.check_now'
   },
   {
     key: 'hr',
@@ -90,7 +90,7 @@ const tasks = ref<PendingTask[]>([
     count: 2,
     themeClass: 'theme-purple',
     badgeClass: 'badge-blue',
-    actionKey: 'dashboard.view_details'
+    actionKey: 'i18nDashboard.dashboard.view_details'
   },
   {
     key: 'meetings',
@@ -98,7 +98,7 @@ const tasks = ref<PendingTask[]>([
     count: 4,
     themeClass: 'theme-purple',
     badgeClass: 'badge-blue',
-    actionKey: 'dashboard.prepare_now'
+    actionKey: 'i18nDashboard.dashboard.prepare_now'
   },
   {
     key: 'purchases',
@@ -106,7 +106,7 @@ const tasks = ref<PendingTask[]>([
     count: 5,
     themeClass: 'theme-orange',
     badgeClass: 'badge-orange',
-    actionKey: 'dashboard.approve_now'
+    actionKey: 'i18nDashboard.dashboard.approve_now'
   },
   {
     key: 'probation',
@@ -114,7 +114,7 @@ const tasks = ref<PendingTask[]>([
     count: 1,
     themeClass: 'theme-green',
     badgeClass: 'badge-blue',
-    actionKey: 'dashboard.review_now'
+    actionKey: 'i18nDashboard.dashboard.review_now'
   },
   {
     key: 'weekly_reports',
@@ -122,7 +122,7 @@ const tasks = ref<PendingTask[]>([
     count: 2,
     themeClass: 'theme-purple',
     badgeClass: 'badge-red',
-    actionKey: 'dashboard.submit_now'
+    actionKey: 'i18nDashboard.dashboard.submit_now'
   }
 ]);
 </script>

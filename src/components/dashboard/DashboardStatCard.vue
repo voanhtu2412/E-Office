@@ -6,7 +6,7 @@
     <div class="card-content">
       <div class="card-header-row">
         <h3>{{ title }}</h3>
-        <a v-if="viewAllUrl" :href="viewAllUrl" class="view-all-link">{{ $t('dashboard.view_all') }}</a>
+        <a v-if="viewAllUrl" :href="viewAllUrl" class="view-all-link">{{ $t('i18nDashboard.dashboard.view_all') }}</a>
       </div>
       <div class="card-numbers">
         <span class="value">{{ value }}</span>

@@ -4,28 +4,28 @@
       <canvas ref="chartCanvas"></canvas>
       <div class="center-text">
         <span class="percentage">78%</span>
-        <span class="label">{{ $t('dashboard.completed_tasks') }}</span>
+        <span class="label">{{ $t('i18nDashboard.dashboard.completed_tasks') }}</span>
       </div>
     </div>
     <div class="legend-list">
       <div class="legend-item">
         <div class="legend-label">
           <span class="dot dot-completed"></span>
-          <span>{{ $t('dashboard.completed_tasks') }}</span>
+          <span>{{ $t('i18nDashboard.dashboard.completed_tasks') }}</span>
         </div>
         <span class="legend-value">78%</span>
       </div>
       <div class="legend-item">
         <div class="legend-label">
           <span class="dot dot-inprogress"></span>
-          <span>{{ $t('dashboard.in_progress_tasks') }}</span>
+          <span>{{ $t('i18nDashboard.dashboard.in_progress_tasks') }}</span>
         </div>
         <span class="legend-value">16%</span>
       </div>
       <div class="legend-item">
         <div class="legend-label">
           <span class="dot dot-overdue"></span>
-          <span>{{ $t('dashboard.overdue_tasks') }}</span>
+          <span>{{ $t('i18nDashboard.dashboard.overdue_tasks') }}</span>
         </div>
         <span class="legend-value">6%</span>
       </div>
@@ -50,7 +50,7 @@ const buildChart = () => {
   chartInstance = new Chart(ctx, {
     type: "doughnut",
     data: {
-      labels: [t('dashboard.completed_tasks'), t('dashboard.in_progress_tasks'), t('dashboard.overdue_tasks')],
+      labels: [t('i18nDashboard.dashboard.completed_tasks'), t('i18nDashboard.dashboard.in_progress_tasks'), t('i18nDashboard.dashboard.overdue_tasks')],
       datasets: [
         {
           data: [78, 16, 6],

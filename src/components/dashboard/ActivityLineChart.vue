@@ -28,17 +28,17 @@ const buildChart = () => {
     type: "line",
     data: {
       labels: [
-        t('dashboard_page.chart.mon'),
-        t('dashboard_page.chart.tue'),
-        t('dashboard_page.chart.wed'),
-        t('dashboard_page.chart.thu'),
-        t('dashboard_page.chart.fri'),
-        t('dashboard_page.chart.sat'),
-        t('dashboard_page.chart.sun')
+        t('i18nDashboard.dashboard_page.chart.mon'),
+        t('i18nDashboard.dashboard_page.chart.tue'),
+        t('i18nDashboard.dashboard_page.chart.wed'),
+        t('i18nDashboard.dashboard_page.chart.thu'),
+        t('i18nDashboard.dashboard_page.chart.fri'),
+        t('i18nDashboard.dashboard_page.chart.sat'),
+        t('i18nDashboard.dashboard_page.chart.sun')
       ],
       datasets: [
         {
-          label: t('dashboard_page.chart.work'),
+          label: t('i18nDashboard.dashboard_page.chart.work'),
           data: [42, 66, 38, 48, 45, 68, 60],
           borderColor: "#0a65ff",
           borderWidth: 2.5,

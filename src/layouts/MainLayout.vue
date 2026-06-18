@@ -46,7 +46,7 @@
             <button type="button" class="rail-quick-btn" title="Mobile App" aria-label="Mobile App">
               <i class="fa-solid fa-mobile-screen-button"></i>
             </button>
-            <button type="button" class="rail-quick-btn" :title="$t('dashboard.support')" :aria-label="$t('dashboard.support')">
+            <button type="button" class="rail-quick-btn" :title="$t('i18nDashboard.dashboard.support')" :aria-label="$t('i18nDashboard.dashboard.support')">
               <i class="fa-solid fa-headset"></i>
             </button>
           </div>
@@ -107,34 +107,35 @@
           <button
             class="sidebar-toggle-btn"
             type="button"
-            :aria-label="$t('header.open_menu')"
+            :aria-label="$t('i18nCommon.header.open_menu')"
             @click="sidebarOpen = true"
           >
             <i class="fa-solid fa-bars"></i>
           </button>
           <div class="welcome-box">
-            <h1>{{ $t('dashboard.hello') }}, Nguyễn Văn An 👋</h1>
-            <p class="current-date">{{ locale === 'vi' ? 'Chủ nhật, 14 tháng 4 năm 2024 • 09:41 AM' : 'Sunday, April 14, 2024 • 09:41 AM' }}</p>
+            <h1>{{ pageTitle }}</h1>
+            <p v-if="isDashboardRoute" class="current-date">{{ locale === 'vi' ? 'Chủ nhật, 14 tháng 4 năm 2024 • 09:41 AM' : 'Sunday, April 14, 2024 • 09:41 AM' }}</p>
+            <p v-else-if="pageSubtitle" class="page-subtitle">{{ pageSubtitle }}</p>
           </div>
         </div>
 
         <div class="header-right">
           <!-- Search box -->
           <div class="search-box">
-            <input type="text" :placeholder="$t('dashboard.search_placeholder')" />
+            <input type="text" :placeholder="$t('i18nDashboard.dashboard.search_placeholder')" />
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
           </div>
 
           <!-- Quick Icons -->
           <div class="action-icons">
-            <div class="icon-wrapper badge-active" role="button" tabindex="0" :title="$t('header.notifications')" :aria-label="$t('header.notifications')">
+            <div class="icon-wrapper badge-active" role="button" tabindex="0" :title="$t('i18nCommon.header.notifications')" :aria-label="$t('i18nCommon.header.notifications')">
               <i class="fa-regular fa-bell"></i>
               <span class="header-badge">8</span>
             </div>
-            <div class="icon-wrapper" role="button" tabindex="0" :title="$t('header.messages')" :aria-label="$t('header.messages')">
+            <div class="icon-wrapper" role="button" tabindex="0" :title="$t('i18nCommon.header.messages')" :aria-label="$t('i18nCommon.header.messages')">
               <i class="fa-regular fa-comment-dots"></i>
             </div>
-            <div class="icon-wrapper" role="button" tabindex="0" :title="$t('header.help')" :aria-label="$t('header.help')">
+            <div class="icon-wrapper" role="button" tabindex="0" :title="$t('i18nCommon.header.help')" :aria-label="$t('i18nCommon.header.help')">
               <i class="fa-regular fa-circle-question"></i>
             </div>
           </div>
@@ -146,7 +147,7 @@
               type="button"
               :aria-expanded="profileOpen"
               aria-haspopup="menu"
-              :title="$t('header.account')"
+              :title="$t('i18nCommon.header.account')"
               @click="toggleProfileMenu"
             >
               <img :src="imageAvatar" alt="Avatar" />
@@ -159,13 +160,13 @@
                 <img :src="imageAvatar" alt="Avatar" />
                 <div class="profile-meta">
                   <strong>Nguyễn Văn An</strong>
-                  <span>{{ $t('dashboard.it_manager') }}</span>
+                  <span>{{ $t('i18nDashboard.dashboard.it_manager') }}</span>
                   <small>an.nguyen@ospace.vn</small>
                 </div>
               </div>
 
               <div class="profile-section">
-                <div class="section-title">{{ $t('profile.language') }}</div>
+                <div class="section-title">{{ $t('i18nCommon.profile.language') }}</div>
                 <div class="language-options">
                   <button
                     type="button"
@@ -189,7 +190,7 @@
               </div>
 
               <div class="profile-section">
-                <div class="section-title">{{ $t('profile.theme') }}</div>
+                <div class="section-title">{{ $t('i18nCommon.profile.theme') }}</div>
                 <div class="theme-options">
                   <button
                     type="button"
@@ -198,7 +199,7 @@
                     @click="setTheme('light')"
                   >
                     <i class="fa-regular fa-sun"></i>
-                    {{ $t('profile.theme_light') }}
+                    {{ $t('i18nCommon.profile.theme_light') }}
                   </button>
                   <button
                     type="button"
@@ -207,7 +208,31 @@
                     @click="setTheme('dark')"
                   >
                     <i class="fa-regular fa-moon"></i>
-                    {{ $t('profile.theme_dark') }}
+                    {{ $t('i18nCommon.profile.theme_dark') }}
+                  </button>
+                </div>
+              </div>
+
+              <div class="profile-section">
+                <div class="section-title">{{ $t('i18nCommon.profile.ai_assistant') }}</div>
+                <div class="theme-options">
+                  <button
+                    type="button"
+                    class="theme-btn"
+                    :class="{ active: !isAiHidden }"
+                    @click="setAiHidden(false)"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                    {{ $t('i18nCommon.profile.show_ai_chat') }}
+                  </button>
+                  <button
+                    type="button"
+                    class="theme-btn"
+                    :class="{ active: isAiHidden }"
+                    @click="setAiHidden(true)"
+                  >
+                    <i class="fa-solid fa-eye-slash"></i>
+                    {{ $t('i18nCommon.profile.hide_ai_chat') }}
                   </button>
                 </div>
               </div>
@@ -215,19 +240,19 @@
               <div class="profile-actions">
                 <button type="button" role="menuitem">
                   <i class="fa-regular fa-user"></i>
-                  {{ $t('profile.account_profile') }}
+                  {{ $t('i18nCommon.profile.account_profile') }}
                 </button>
                 <button type="button" role="menuitem">
                   <i class="fa-solid fa-shield-halved"></i>
-                  {{ $t('profile.security') }}
+                  {{ $t('i18nCommon.profile.security') }}
                 </button>
                 <button type="button" role="menuitem">
                   <i class="fa-solid fa-gear"></i>
-                  {{ $t('profile.settings') }}
+                  {{ $t('i18nCommon.profile.settings') }}
                 </button>
                 <button type="button" class="logout-action" role="menuitem">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                  {{ $t('profile.logout') }}
+                  {{ $t('i18nCommon.profile.logout') }}
                 </button>
               </div>
             </div>
@@ -248,10 +273,26 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
 import imageAvatar from '@/assets/image/imageAvatar.png';
 import AiChatBubble from '@/components/AiChatBubble.vue';
+import { isAiHidden, setAiHidden } from '@/utils/aiState';
 
+const route = useRoute();
 const { locale, t } = useI18n();
+
+const isDashboardRoute = computed(() => route.path === '/dashboard' || route.name === 'Dashboard');
+
+const pageTitle = computed(() => {
+  if (isDashboardRoute.value) {
+    return `${t('i18nDashboard.dashboard.hello')}, Nguyễn Văn An 👋`;
+  }
+  return (route.meta?.title as string) || (route.name as string) || 'OSPACE';
+});
+
+const pageSubtitle = computed(() => {
+  return (route.meta?.description as string) || '';
+});
 const sidebarOpen = ref(false);
 const activeModuleKey = ref<string | null>(null);
 const expandedActionKey = ref<string | null>(null);
@@ -281,273 +322,273 @@ const initTheme = () => {
 const sidebarModules = computed(() => [
   {
     key: 'dashboard',
-    title: t('dashboard.dashboard'),
+    title: t('i18nDashboard.dashboard.dashboard'),
     icon: 'fa-solid fa-house',
     items: [
       {
-        label: t('dashboard.overview'),
+        label: t('i18nDashboard.dashboard.overview'),
         icon: 'fa-solid fa-chart-pie',
         children: [
-          t('dashboard.submenu_children.personal_dashboard'),
-          t('dashboard.submenu_children.by_dept'),
-          t('dashboard.submenu_children.by_week')
+          t('i18nDashboard.dashboard.submenu_children.personal_dashboard'),
+          t('i18nDashboard.dashboard.submenu_children.by_dept'),
+          t('i18nDashboard.dashboard.submenu_children.by_week')
         ]
       },
       {
-        label: t('dashboard.quick_statistics'),
+        label: t('i18nDashboard.dashboard.quick_statistics'),
         icon: 'fa-solid fa-gauge-high',
         children: [
-          t('dashboard.submenu_children.archived_docs'),
-          t('dashboard.submenu_children.online_users'),
-          t('dashboard.submenu_children.used_capacity')
+          t('i18nDashboard.dashboard.submenu_children.archived_docs'),
+          t('i18nDashboard.dashboard.submenu_children.online_users'),
+          t('i18nDashboard.dashboard.submenu_children.used_capacity')
         ]
       },
       {
-        label: t('dashboard.today_schedule'),
+        label: t('i18nDashboard.dashboard.today_schedule'),
         icon: 'fa-solid fa-calendar-day',
         children: [
-          t('dashboard.submenu_children.today_schedule'),
-          t('dashboard.submenu_children.create_schedule'),
-          t('dashboard.submenu_children.book_room')
+          t('i18nDashboard.dashboard.submenu_children.today_schedule'),
+          t('i18nDashboard.dashboard.submenu_children.create_schedule'),
+          t('i18nDashboard.dashboard.submenu_children.book_room')
         ]
       },
     ],
   },
   {
     key: 'work',
-    title: t('dashboard.my_work'),
+    title: t('i18nDashboard.dashboard.my_work'),
     icon: 'fa-solid fa-list-check',
     badge: 12,
     items: [
       {
-        label: t('dashboard.my_work'),
+        label: t('i18nDashboard.dashboard.my_work'),
         icon: 'fa-solid fa-briefcase',
         children: [
-          t('dashboard.submenu_children.work_in_progress'),
-          t('dashboard.submenu_children.work_overdue'),
-          t('dashboard.submenu_children.work_completed')
+          t('i18nDashboard.dashboard.submenu_children.work_in_progress'),
+          t('i18nDashboard.dashboard.submenu_children.work_overdue'),
+          t('i18nDashboard.dashboard.submenu_children.work_completed')
         ]
       },
       {
-        label: t('dashboard.tasks_to_handle'),
+        label: t('i18nDashboard.dashboard.tasks_to_handle'),
         icon: 'fa-solid fa-inbox',
         children: [
-          t('dashboard.submenu_children.handle_today'),
-          t('dashboard.submenu_children.assigned_to_me'),
-          t('dashboard.submenu_children.assigned_by_me')
+          t('i18nDashboard.dashboard.submenu_children.handle_today'),
+          t('i18nDashboard.dashboard.submenu_children.assigned_to_me'),
+          t('i18nDashboard.dashboard.submenu_children.assigned_by_me')
         ]
       },
       {
-        label: t('dashboard.view_details'),
+        label: t('i18nDashboard.dashboard.view_details'),
         icon: 'fa-solid fa-eye',
         children: [
-          t('dashboard.submenu_children.task_details'),
-          t('dashboard.submenu_children.process_history'),
-          t('dashboard.submenu_children.attachments')
+          t('i18nDashboard.dashboard.submenu_children.task_details'),
+          t('i18nDashboard.dashboard.submenu_children.process_history'),
+          t('i18nDashboard.dashboard.submenu_children.attachments')
         ]
       },
     ],
   },
   {
     key: 'docs',
-    title: t('dashboard.docs_docs'),
+    title: t('i18nDashboard.dashboard.docs_docs'),
     icon: 'fa-solid fa-folder-open',
     items: [
       {
-        label: t('dashboard.submenu.docs_incoming'),
+        label: t('i18nDashboard.dashboard.submenu.docs_incoming'),
         icon: 'fa-solid fa-file-import',
         children: [
-          t('dashboard.submenu_children.pending_action'),
-          t('dashboard.submenu_children.received'),
-          t('dashboard.submenu_children.urgent_docs')
+          t('i18nDashboard.dashboard.submenu_children.pending_action'),
+          t('i18nDashboard.dashboard.submenu_children.received'),
+          t('i18nDashboard.dashboard.submenu_children.urgent_docs')
         ]
       },
       {
-        label: t('dashboard.submenu.docs_outgoing'),
+        label: t('i18nDashboard.dashboard.submenu.docs_outgoing'),
         icon: 'fa-solid fa-file-export',
         children: [
-          t('dashboard.submenu_children.create_doc'),
-          t('dashboard.submenu_children.pending_sig'),
-          t('dashboard.submenu_children.issued')
+          t('i18nDashboard.dashboard.submenu_children.create_doc'),
+          t('i18nDashboard.dashboard.submenu_children.pending_sig'),
+          t('i18nDashboard.dashboard.submenu_children.issued')
         ]
       },
       {
-        label: t('dashboard.submenu.docs_archive'),
+        label: t('i18nDashboard.dashboard.submenu.docs_archive'),
         icon: 'fa-solid fa-box-archive',
         children: [
-          t('dashboard.submenu_children.search_files'),
-          t('dashboard.submenu_children.repository'),
-          t('dashboard.submenu_children.doc_classification')
+          t('i18nDashboard.dashboard.submenu_children.search_files'),
+          t('i18nDashboard.dashboard.submenu_children.repository'),
+          t('i18nDashboard.dashboard.submenu_children.doc_classification')
         ]
       },
     ],
   },
   {
     key: 'process',
-    title: t('dashboard.process_approval'),
+    title: t('i18nDashboard.dashboard.process_approval'),
     icon: 'fa-solid fa-network-wired',
     items: [
       {
-        label: t('dashboard.submenu.process_my_requests'),
+        label: t('i18nDashboard.dashboard.submenu.process_my_requests'),
         icon: 'fa-solid fa-paper-plane',
         children: [
-          t('dashboard.submenu_children.create_request'),
-          t('dashboard.submenu_children.pending_approval'),
-          t('dashboard.submenu_children.completed')
+          t('i18nDashboard.dashboard.submenu_children.create_request'),
+          t('i18nDashboard.dashboard.submenu_children.pending_approval'),
+          t('i18nDashboard.dashboard.submenu_children.completed')
         ]
       },
       {
-        label: t('dashboard.submenu.process_pending'),
+        label: t('i18nDashboard.dashboard.submenu.process_pending'),
         icon: 'fa-solid fa-user-check',
         children: [
-          t('dashboard.submenu_children.quick_approve'),
-          t('dashboard.submenu_children.forward'),
-          t('dashboard.submenu_children.reject')
+          t('i18nDashboard.dashboard.submenu_children.quick_approve'),
+          t('i18nDashboard.dashboard.submenu_children.forward'),
+          t('i18nDashboard.dashboard.submenu_children.reject')
         ]
       },
       {
-        label: t('dashboard.submenu.process_templates'),
+        label: t('i18nDashboard.dashboard.submenu.process_templates'),
         icon: 'fa-solid fa-diagram-project',
         children: [
-          t('dashboard.submenu_children.procurement_template'),
-          t('dashboard.submenu_children.leave_template'),
-          t('dashboard.submenu_children.payment_template')
+          t('i18nDashboard.dashboard.submenu_children.procurement_template'),
+          t('i18nDashboard.dashboard.submenu_children.leave_template'),
+          t('i18nDashboard.dashboard.submenu_children.payment_template')
         ]
       },
     ],
   },
   {
     key: 'calendar',
-    title: t('dashboard.calendar_meetings'),
+    title: t('i18nDashboard.dashboard.calendar_meetings'),
     icon: 'fa-solid fa-calendar-days',
     items: [
       {
-        label: t('dashboard.submenu.cal_personal'),
+        label: t('i18nDashboard.dashboard.submenu.cal_personal'),
         icon: 'fa-solid fa-calendar-check',
         children: [
-          t('dashboard.submenu_children.daily_calendar'),
-          t('dashboard.submenu_children.weekly_calendar'),
-          t('dashboard.submenu_children.task_reminder')
+          t('i18nDashboard.dashboard.submenu_children.daily_calendar'),
+          t('i18nDashboard.dashboard.submenu_children.weekly_calendar'),
+          t('i18nDashboard.dashboard.submenu_children.task_reminder')
         ]
       },
       {
-        label: t('dashboard.submenu.cal_dept'),
+        label: t('i18nDashboard.dashboard.submenu.cal_dept'),
         icon: 'fa-solid fa-building-user',
         children: [
-          t('dashboard.submenu_children.dept_calendar'),
-          t('dashboard.submenu_children.duty_roster'),
-          t('dashboard.submenu_children.common_events')
+          t('i18nDashboard.dashboard.submenu_children.dept_calendar'),
+          t('i18nDashboard.dashboard.submenu_children.duty_roster'),
+          t('i18nDashboard.dashboard.submenu_children.common_events')
         ]
       },
       {
-        label: t('dashboard.submenu.cal_rooms'),
+        label: t('i18nDashboard.dashboard.submenu.cal_rooms'),
         icon: 'fa-solid fa-door-open',
         children: [
-          t('dashboard.submenu_children.available_rooms'),
-          t('dashboard.submenu_children.book_a_room'),
-          t('dashboard.submenu_children.booking_history')
+          t('i18nDashboard.dashboard.submenu_children.available_rooms'),
+          t('i18nDashboard.dashboard.submenu_children.book_a_room'),
+          t('i18nDashboard.dashboard.submenu_children.booking_history')
         ]
       },
     ],
   },
   {
     key: 'assets',
-    title: t('dashboard.assets_devices'),
+    title: t('i18nDashboard.dashboard.assets_devices'),
     icon: 'fa-solid fa-laptop-house',
     items: [
       {
-        label: t('dashboard.submenu.assets_list'),
+        label: t('i18nDashboard.dashboard.submenu.assets_list'),
         icon: 'fa-solid fa-laptop',
         children: [
-          t('dashboard.submenu_children.devices_directory'),
-          t('dashboard.submenu_children.allocated_assets'),
-          t('dashboard.submenu_children.recalled_assets')
+          t('i18nDashboard.dashboard.submenu_children.devices_directory'),
+          t('i18nDashboard.dashboard.submenu_children.allocated_assets'),
+          t('i18nDashboard.dashboard.submenu_children.recalled_assets')
         ]
       },
       {
-        label: t('dashboard.submenu.assets_request'),
+        label: t('i18nDashboard.dashboard.submenu.assets_request'),
         icon: 'fa-solid fa-cloud-arrow-up',
         children: [
-          t('dashboard.submenu_children.new_request'),
-          t('dashboard.submenu_children.pending_allocation'),
-          t('dashboard.submenu_children.allocated')
+          t('i18nDashboard.dashboard.submenu_children.new_request'),
+          t('i18nDashboard.dashboard.submenu_children.pending_allocation'),
+          t('i18nDashboard.dashboard.submenu_children.allocated')
         ]
       },
       {
-        label: t('dashboard.submenu.assets_maintenance'),
+        label: t('i18nDashboard.dashboard.submenu.assets_maintenance'),
         icon: 'fa-solid fa-screwdriver-wrench',
         children: [
-          t('dashboard.submenu_children.report_breakdown'),
-          t('dashboard.submenu_children.maintenance_schedule'),
-          t('dashboard.submenu_children.repair_record')
+          t('i18nDashboard.dashboard.submenu_children.report_breakdown'),
+          t('i18nDashboard.dashboard.submenu_children.maintenance_schedule'),
+          t('i18nDashboard.dashboard.submenu_children.repair_record')
         ]
       },
     ],
   },
   {
     key: 'reports',
-    title: t('dashboard.reports_stats'),
+    title: t('i18nDashboard.dashboard.reports_stats'),
     icon: 'fa-solid fa-chart-line',
     items: [
       {
-        label: t('dashboard.submenu.reports_work'),
+        label: t('i18nDashboard.dashboard.submenu.reports_work'),
         icon: 'fa-solid fa-chart-simple',
         children: [
-          t('dashboard.submenu_children.daily_report'),
-          t('dashboard.submenu_children.weekly_report'),
-          t('dashboard.submenu_children.monthly_report')
+          t('i18nDashboard.dashboard.submenu_children.daily_report'),
+          t('i18nDashboard.dashboard.submenu_children.weekly_report'),
+          t('i18nDashboard.dashboard.submenu_children.monthly_report')
         ]
       },
       {
-        label: t('dashboard.submenu.reports_performance'),
+        label: t('i18nDashboard.dashboard.submenu.reports_performance'),
         icon: 'fa-solid fa-chart-column',
         children: [
-          t('dashboard.submenu_children.by_individual'),
-          t('dashboard.submenu_children.by_department'),
-          t('dashboard.submenu_children.by_kpi')
+          t('i18nDashboard.dashboard.submenu_children.by_individual'),
+          t('i18nDashboard.dashboard.submenu_children.by_department'),
+          t('i18nDashboard.dashboard.submenu_children.by_kpi')
         ]
       },
       {
-        label: t('dashboard.submenu.reports_finance'),
+        label: t('i18nDashboard.dashboard.submenu.reports_finance'),
         icon: 'fa-solid fa-coins',
         children: [
-          t('dashboard.submenu_children.expenses'),
-          t('dashboard.submenu_children.advance_payment'),
-          t('dashboard.submenu_children.final_payment')
+          t('i18nDashboard.dashboard.submenu_children.expenses'),
+          t('i18nDashboard.dashboard.submenu_children.advance_payment'),
+          t('i18nDashboard.dashboard.submenu_children.final_payment')
         ]
       },
     ],
   },
   {
     key: 'settings',
-    title: t('dashboard.settings'),
+    title: t('i18nDashboard.dashboard.settings'),
     icon: 'fa-solid fa-gear',
     items: [
       {
-        label: t('dashboard.settings'),
+        label: t('i18nDashboard.dashboard.settings'),
         icon: 'fa-solid fa-sliders',
         children: [
-          t('dashboard.submenu_children.company_info'),
-          t('dashboard.submenu_children.permissions'),
-          t('dashboard.submenu_children.system_config')
+          t('i18nDashboard.dashboard.submenu_children.company_info'),
+          t('i18nDashboard.dashboard.submenu_children.permissions'),
+          t('i18nDashboard.dashboard.submenu_children.system_config')
         ]
       },
       {
-        label: t('dashboard.support'),
+        label: t('i18nDashboard.dashboard.support'),
         icon: 'fa-solid fa-headset',
         children: [
-          t('dashboard.submenu_children.submit_request'),
-          t('dashboard.submenu_children.user_guide'),
-          t('dashboard.submenu_children.contact_support')
+          t('i18nDashboard.dashboard.submenu_children.submit_request'),
+          t('i18nDashboard.dashboard.submenu_children.user_guide'),
+          t('i18nDashboard.dashboard.submenu_children.contact_support')
         ]
       },
       {
-        label: t('dashboard.submenu.web_portal'),
+        label: t('i18nDashboard.dashboard.submenu.web_portal'),
         icon: 'fa-solid fa-globe',
         children: [
-          t('dashboard.submenu_children.intranet'),
-          t('dashboard.submenu_children.system_announcements'),
-          t('dashboard.submenu_children.quick_links')
+          t('i18nDashboard.dashboard.submenu_children.intranet'),
+          t('i18nDashboard.dashboard.submenu_children.system_announcements'),
+          t('i18nDashboard.dashboard.submenu_children.quick_links')
         ]
       },
     ],
@@ -1392,6 +1433,8 @@ onUnmounted(() => {
   align-items: center;
   gap: 16px;
   flex-shrink: 0;
+  border-bottom: 2px solid $border-light;
+  padding-bottom: 16px;
   
   @media (max-width: 768px) {
     flex-direction: column;

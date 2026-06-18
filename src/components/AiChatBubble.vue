@@ -1,12 +1,24 @@
 <template>
-  <div class="ai-chat-bubble-container">
+  <div v-if="!isDismissed && !isAiHidden" class="ai-chat-bubble-container">
+    <!-- Dismiss FAB button -->
+    <button
+      v-if="!isOpen"
+      class="dismiss-bubble-btn"
+      type="button"
+      title="Ẩn trợ lý AI"
+      aria-label="Ẩn trợ lý AI"
+      @click.stop="dismissBubble"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
     <!-- Floating Chat Bubble (FAB) -->
     <button
       class="ai-chat-bubble"
       type="button"
       :class="{ 'open': isOpen }"
-      :aria-label="isOpen ? $t('chat.close_assistant') : $t('chat.open_assistant')"
-      :title="isOpen ? $t('chat.close_assistant') : $t('chat.open_assistant')"
+      :aria-label="isOpen ? $t('i18nCommon.chat.close_assistant') : $t('i18nCommon.chat.open_assistant')"
+      :title="isOpen ? $t('i18nCommon.chat.close_assistant') : $t('i18nCommon.chat.open_assistant')"
       @click="toggleChat"
     >
       <div class="bubble-inner">
@@ -30,11 +42,11 @@
             <span class="online-indicator"></span>
           </div>
           <div class="ai-info">
-            <h3>{{ $t('chat.assistant_title') }}</h3>
-            <span>{{ $t('chat.online') }}</span>
+            <h3>{{ $t('i18nCommon.chat.assistant_title') }}</h3>
+            <span>{{ $t('i18nCommon.chat.online') }}</span>
           </div>
         </div>
-        <button class="close-chat-btn" type="button" :aria-label="$t('chat.close_assistant')" :title="$t('chat.close')" @click="toggleChat">
+        <button class="close-chat-btn" type="button" :aria-label="$t('i18nCommon.chat.close_assistant')" :title="$t('i18nCommon.chat.close')" @click="toggleChat">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
@@ -76,10 +88,10 @@
         <input 
           v-model="userInput" 
           type="text" 
-          :placeholder="$t('chat.placeholder')" 
+          :placeholder="$t('i18nCommon.chat.placeholder')" 
           ref="inputRef"
         />
-        <button type="submit" class="send-btn" :aria-label="$t('chat.send_message')" :title="$t('chat.send')" :disabled="!userInput.trim()">
+        <button type="submit" class="send-btn" :aria-label="$t('i18nCommon.chat.send_message')" :title="$t('i18nCommon.chat.send')" :disabled="!userInput.trim()">
           <i class="fa-solid fa-paper-plane"></i>
         </button>
       </form>
@@ -91,6 +103,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { isAiHidden } from '@/utils/aiState';
 
 const { t } = useI18n();
 
@@ -108,11 +121,16 @@ const viewportHeight = ref(window.innerHeight);
 const isOpen = ref(false);
 const isTyping = ref(false);
 const userInput = ref('');
+const isDismissed = ref(false);
+
+const dismissBubble = () => {
+  isDismissed.value = true;
+};
 
 const messages = ref<Message[]>([
   {
     sender: 'ai',
-    text: t('chat.welcome_msg'),
+    text: t('i18nCommon.chat.welcome_msg'),
     time: formatTime(new Date())
   }
 ]);
@@ -207,33 +225,69 @@ function getAIResponse(input: string): string {
   const lower = input.toLowerCase();
   
   if (lower.includes('chào') || lower.includes('hello') || lower.includes('hi')) {
-    return t('chat.ai_resp_hello');
+    return t('i18nCommon.chat.ai_resp_hello');
   }
   if (lower.includes('việc') || lower.includes('công việc') || lower.includes('task')) {
-    return t('chat.ai_resp_work');
+    return t('i18nCommon.chat.ai_resp_work');
   }
   if (lower.includes('duyệt') || lower.includes('phê duyệt') || lower.includes('yêu cầu')) {
-    return t('chat.ai_resp_approvals');
+    return t('i18nCommon.chat.ai_resp_approvals');
   }
   if (lower.includes('tài liệu') || lower.includes('văn bản') || lower.includes('hồ sơ')) {
-    return t('chat.ai_resp_docs');
+    return t('i18nCommon.chat.ai_resp_docs');
   }
   if (lower.includes('lịch') || lower.includes('họp') || lower.includes('meeting')) {
-    return t('chat.ai_resp_calendar');
+    return t('i18nCommon.chat.ai_resp_calendar');
   }
   if (lower.includes('tài sản') || lower.includes('kho') || lower.includes('thiết bị')) {
-    return t('chat.ai_resp_assets');
+    return t('i18nCommon.chat.ai_resp_assets');
   }
   if (lower.includes('nhân sự') || lower.includes('nghỉ phép') || lower.includes('phép')) {
-    return t('chat.ai_resp_hr');
+    return t('i18nCommon.chat.ai_resp_hr');
   }
   
-  return t('chat.ai_resp_default');
+  return t('i18nCommon.chat.ai_resp_default');
 }
 </script>
 
 <style lang="scss" scoped>
 @use "@/assets/styles/variables.scss" as *;
+
+.dismiss-bubble-btn {
+  position: fixed;
+  right: 26px;
+  bottom: 66px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: $bg-card;
+  border: 1px solid rgba(10, 101, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-light;
+  font-size: 10px;
+  cursor: pointer;
+  z-index: 10000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0;
+  visibility: hidden;
+
+  &:hover {
+    color: $danger-color;
+    border-color: $danger-color;
+    transform: scale(1.1);
+    background-color: #ffeef0;
+  }
+}
+
+.ai-chat-bubble:hover ~ .dismiss-bubble-btn,
+.dismiss-bubble-btn:hover {
+  opacity: 1;
+  visibility: visible;
+  right: 34px;
+}
 
 .ai-chat-bubble {
   position: fixed;

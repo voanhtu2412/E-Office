@@ -4,9 +4,9 @@
     <section class="stat-cards-container">
       <DashboardStatCard
         icon="fa-solid fa-briefcase"
-        :title="$t('dashboard.my_work')"
+        :title="$t('i18nDashboard.dashboard.my_work')"
         value="32"
-        :trend-text="$t('dashboard.in_progress_tasks')"
+        :trend-text="$t('i18nDashboard.dashboard.in_progress_tasks')"
         theme-class="blue-theme"
         :show-sparkline="true"
         sparkline-color="#0a65ff"
@@ -15,7 +15,7 @@
 
       <DashboardStatCard
         icon="fa-solid fa-file-invoice"
-        :title="$t('dashboard.pending_documents')"
+        :title="$t('i18nDashboard.dashboard.pending_documents')"
         value="16"
         trend-text="8%"
         trend-type="positive"
@@ -27,7 +27,7 @@
 
       <DashboardStatCard
         icon="fa-solid fa-shield-halved"
-        :title="$t('dashboard.approvals')"
+        :title="$t('i18nDashboard.dashboard.approvals')"
         value="09"
         trend-text="12%"
         trend-type="positive"
@@ -39,7 +39,7 @@
 
       <DashboardStatCard
         icon="fa-solid fa-bell"
-        :title="$t('dashboard.new_notifications')"
+        :title="$t('i18nDashboard.dashboard.new_notifications')"
         value="23"
         trend-text="15%"
         trend-type="positive"
@@ -57,9 +57,9 @@
           <!-- Line Chart Card -->
           <div class="dashboard-card chart-card">
             <div class="card-header-row">
-              <h2>{{ $t('dashboard.active_dashboard') }}</h2>
+              <h2>{{ $t('i18nDashboard.dashboard.active_dashboard') }}</h2>
               <div class="dropdown-select">
-                <span>{{ $t('dashboard_page.this_week') }}</span>
+                <span>{{ $t('i18nDashboard.dashboard_page.this_week') }}</span>
                 <i class="fa-solid fa-chevron-down"></i>
               </div>
             </div>
@@ -71,7 +71,7 @@
           <!-- Donut Chart Card -->
           <div class="dashboard-card chart-card">
             <div class="card-header-row">
-              <h2>{{ $t('dashboard.work_ratio') }}</h2>
+              <h2>{{ $t('i18nDashboard.dashboard.work_ratio') }}</h2>
             </div>
             <div class="chart-body">
               <TaskDonutChart />
@@ -82,43 +82,43 @@
         <!-- Functional Shortcuts -->
         <div class="dashboard-card shortcuts-card">
           <div class="card-header-row">
-            <h2>{{ $t('dashboard.functional_shortcuts') }}</h2>
+            <h2>{{ $t('i18nDashboard.dashboard.functional_shortcuts') }}</h2>
           </div>
           <div class="shortcuts-grid">
             <DashboardShortcut
               icon="fa-solid fa-network-wired"
-              :label="$t('dashboard.process')"
+              :label="$t('i18nDashboard.dashboard.process')"
               gradient-class="gradient-blue"
             />
             <DashboardShortcut
               icon="fa-solid fa-shield-halved"
-              :label="$t('dashboard.approvals')"
+              :label="$t('i18nDashboard.dashboard.approvals')"
               gradient-class="gradient-green"
               :badge-count="5"
             />
             <DashboardShortcut
               icon="fa-solid fa-folder-open"
-              :label="$t('dashboard.documents')"
+              :label="$t('i18nDashboard.dashboard.documents')"
               gradient-class="gradient-blue-light"
             />
             <DashboardShortcut
               icon="fa-solid fa-clock-rotate-left"
-              :label="$t('dashboard.attendance')"
+              :label="$t('i18nDashboard.dashboard.attendance')"
               gradient-class="gradient-green-light"
             />
             <DashboardShortcut
               icon="fa-solid fa-people-group"
-              :label="$t('dashboard.meeting_room')"
+              :label="$t('i18nDashboard.dashboard.meeting_room')"
               gradient-class="gradient-purple"
             />
             <DashboardShortcut
               icon="fa-solid fa-cubes"
-              :label="$t('dashboard.assets_store')"
+              :label="$t('i18nDashboard.dashboard.assets_store')"
               gradient-class="gradient-blue-dark"
             />
             <DashboardShortcut
               icon="fa-solid fa-headset"
-              :label="$t('dashboard.support')"
+              :label="$t('i18nDashboard.dashboard.support')"
               gradient-class="gradient-purple-light"
             />
           </div>
@@ -127,7 +127,7 @@
         <!-- Quick Statistics Row -->
         <div class="dashboard-card quick-stats-card">
           <div class="card-header-row">
-            <h2>{{ $t('dashboard.quick_statistics') }}</h2>
+            <h2>{{ $t('i18nDashboard.dashboard.quick_statistics') }}</h2>
           </div>
           <div class="quick-stats-grid">
             <div class="quick-stat-item">
@@ -135,7 +135,7 @@
                 <i class="fa-solid fa-folder-closed"></i>
               </div>
               <div class="stat-info">
-                <div class="label">{{ $t('dashboard.archived_documents') }}</div>
+                <div class="label">{{ $t('i18nDashboard.dashboard.archived_documents') }}</div>
                 <div class="num-row">
                   <span class="val">1.245</span>
                   <span class="trend positive">+23%</span>
@@ -148,7 +148,7 @@
                 <i class="fa-solid fa-user-check"></i>
               </div>
               <div class="stat-info">
-                <div class="label">{{ $t('dashboard.online_users') }}</div>
+                <div class="label">{{ $t('i18nDashboard.dashboard.online_users') }}</div>
                 <div class="num-row">
                   <span class="val">128</span>
                 </div>
@@ -161,7 +161,7 @@
               </div>
               <div class="stat-info-progress">
                 <div class="label-row">
-                  <span class="label">{{ $t('dashboard.used_capacity') }}</span>
+                  <span class="label">{{ $t('i18nDashboard.dashboard.used_capacity') }}</span>
                   <span class="val">68%</span>
                 </div>
                 <div class="progress-track">
@@ -175,7 +175,7 @@
                 <i class="fa-solid fa-stopwatch-20"></i>
               </div>
               <div class="stat-info">
-                <div class="label">{{ $t('dashboard.saved_time') }}</div>
+                <div class="label">{{ $t('i18nDashboard.dashboard.saved_time') }}</div>
                 <div class="num-row">
                   <span class="val">320h</span>
                   <span class="trend positive">+15%</span>
@@ -191,37 +191,37 @@
         <!-- New Notifications List -->
         <div class="dashboard-card sidebar-list-card">
           <div class="card-header-row">
-            <h2>{{ $t('dashboard.new_notifications') }}</h2>
-            <a href="javascript:void(0)" class="view-all-link">{{ $t('dashboard.view_all') }}</a>
+            <h2>{{ $t('i18nDashboard.dashboard.new_notifications') }}</h2>
+            <a href="javascript:void(0)" class="view-all-link">{{ $t('i18nDashboard.dashboard.view_all') }}</a>
           </div>
           <div class="notifications-list">
             <DashboardNotificationItem
               icon="fa-solid fa-cubes"
               icon-theme-class="icon-blue"
-              :title="$t('dashboard_page.notifications.item1_title')"
-              :sender="$t('dashboard_page.notifications.item1_sender')"
-              :time-text="$t('dashboard_page.notifications.time_5m')"
+              :title="$t('i18nDashboard.dashboard_page.notifications.item1_title')"
+              :sender="$t('i18nDashboard.dashboard_page.notifications.item1_sender')"
+              :time-text="$t('i18nDashboard.dashboard_page.notifications.time_5m')"
             />
             <DashboardNotificationItem
               icon="fa-solid fa-file-invoice"
               icon-theme-class="icon-green"
-              :title="$t('dashboard_page.notifications.item2_title')"
-              :sender="$t('dashboard_page.notifications.item2_sender')"
-              :time-text="$t('dashboard_page.notifications.time_15m')"
+              :title="$t('i18nDashboard.dashboard_page.notifications.item2_title')"
+              :sender="$t('i18nDashboard.dashboard_page.notifications.item2_sender')"
+              :time-text="$t('i18nDashboard.dashboard_page.notifications.time_15m')"
             />
             <DashboardNotificationItem
               icon="fa-solid fa-calendar-check"
               icon-theme-class="icon-purple"
-              :title="$t('dashboard_page.notifications.item3_title')"
-              :sender="$t('dashboard_page.notifications.item3_sender')"
-              :time-text="$t('dashboard_page.notifications.time_30m')"
+              :title="$t('i18nDashboard.dashboard_page.notifications.item3_title')"
+              :sender="$t('i18nDashboard.dashboard_page.notifications.item3_sender')"
+              :time-text="$t('i18nDashboard.dashboard_page.notifications.time_30m')"
             />
             <DashboardNotificationItem
               icon="fa-solid fa-signature"
               icon-theme-class="icon-green-light"
-              :title="$t('dashboard_page.notifications.item4_title')"
-              :sender="$t('dashboard_page.notifications.item4_sender')"
-              :time-text="$t('dashboard_page.notifications.time_45m')"
+              :title="$t('i18nDashboard.dashboard_page.notifications.item4_title')"
+              :sender="$t('i18nDashboard.dashboard_page.notifications.item4_sender')"
+              :time-text="$t('i18nDashboard.dashboard_page.notifications.time_45m')"
             />
           </div>
         </div>
@@ -229,7 +229,7 @@
         <!-- Today's Schedule Timeline -->
         <div class="dashboard-card sidebar-list-card schedule-card">
           <div class="card-header-row">
-            <h2>{{ $t('dashboard.today_schedule') }}</h2>
+            <h2>{{ $t('i18nDashboard.dashboard.today_schedule') }}</h2>
             <div class="schedule-header-right">
               <span class="date-lbl">14/04/2024</span>
               <button class="add-event-btn"><i class="fa-solid fa-plus"></i></button>
@@ -238,24 +238,24 @@
           <div class="schedule-timeline">
             <DashboardTimelineItem
               time-text="09:00"
-              :title="$t('dashboard_page.schedule.item1_title')"
-              :location="$t('dashboard_page.schedule.item1_loc')"
-              :status-text="$t('dashboard.running')"
+              :title="$t('i18nDashboard.dashboard_page.schedule.item1_title')"
+              :location="$t('i18nDashboard.dashboard_page.schedule.item1_loc')"
+              :status-text="$t('i18nDashboard.dashboard.running')"
               status-type="running"
             />
             <DashboardTimelineItem
               time-text="11:00"
-              :title="$t('dashboard_page.schedule.item2_title')"
-              :location="$t('dashboard_page.schedule.item2_loc')"
-              :status-text="$t('dashboard.upcoming')"
+              :title="$t('i18nDashboard.dashboard_page.schedule.item2_title')"
+              :location="$t('i18nDashboard.dashboard_page.schedule.item2_loc')"
+              :status-text="$t('i18nDashboard.dashboard.upcoming')"
               status-type="upcoming"
             />
             <DashboardTimelineItem
               time-text="14:00"
-              :title="$t('dashboard_page.schedule.item3_title')"
-              :location="$t('dashboard_page.schedule.item3_loc')"
+              :title="$t('i18nDashboard.dashboard_page.schedule.item3_title')"
+              :location="$t('i18nDashboard.dashboard_page.schedule.item3_loc')"
               location-icon="fa-solid fa-globe"
-              :status-text="$t('dashboard.scheduled')"
+              :status-text="$t('i18nDashboard.dashboard.scheduled')"
               status-type="scheduled"
               :show-line="false"
             />
