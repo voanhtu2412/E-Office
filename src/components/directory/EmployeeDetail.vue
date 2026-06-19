@@ -146,9 +146,9 @@
 <script setup>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { useEmployeeDetail } from '@/services/directory/composables/useDirectory.js'
+import { useEmployeeDetail } from '@/modules/directory/composables/useDirectory.js'
 import { useDirectoryStore } from '@/stores/directory/directoryStore.js'
-import { EMPLOYEE_STATUS_LABEL, EMPLOYEE_STATUS_CLASS } from '@/services/directory/constants/status.js'
+import { EMPLOYEE_STATUS_LABEL, EMPLOYEE_STATUS_CLASS } from '@/modules/directory/constants/status.js'
 
 const props = defineProps({
   employeeId: { type: String, default: null }

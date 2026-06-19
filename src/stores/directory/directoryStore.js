@@ -12,7 +12,7 @@ import {
   getEmployees,
   getDepartments,
   getContactGroups,
-} from '../../services/directory/directoryService.js'
+} from '../../modules/directory/directoryService.js'
 
 export const useDirectoryStore = defineStore('directory', () => {
   // ── State ────────────────────────────────────────────────────

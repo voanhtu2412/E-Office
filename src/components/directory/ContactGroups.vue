@@ -191,7 +191,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { useDirectoryStore } from '@/stores/directory/directoryStore.js'
-import { useContactGroups } from '@/services/directory/composables/useDirectory.js'
+import { useContactGroups } from '@/modules/directory/composables/useDirectory.js'
 
 const store = useDirectoryStore()
 const { groups, isLoading, getEmployee } = useContactGroups()

@@ -92,9 +92,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import OrganizationTree from '@/components/directory/OrganizationTree.vue'
-import { mockOrgChart } from '@/services/directory/data/mockOrgChart.js'
-import { mockDepartments } from '@/services/directory/data/mockDepartments.js'
-import { mockEmployees } from '@/services/directory/data/mockEmployees.js'
+import { mockOrgChart } from '@/modules/directory/data/mockOrgChart.js'
+import { mockDepartments } from '@/modules/directory/data/mockDepartments.js'
+import { mockEmployees } from '@/modules/directory/data/mockEmployees.js'
 import { useDirectoryStore } from '@/stores/directory/directoryStore.js'
 
 const emit = defineEmits(['close'])

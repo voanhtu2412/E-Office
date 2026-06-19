@@ -11,7 +11,7 @@
 
 import { ref, computed, watch, onMounted, isRef } from 'vue'
 import { useDirectoryStore } from '@/stores/directory/directoryStore.js'
-import { getEmployeeById, getContactHistory } from '@/services/directory/directoryService.js'
+import { getEmployeeById, getContactHistory } from '@/modules/directory/directoryService.js'
 
 // ── useEmployeeList ────────────────────────────────────────────
 /**

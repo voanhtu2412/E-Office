@@ -1,10 +1,15 @@
 <template>
   <div class="dir-cb-wrapper">
-    <DirectoryHeader title="Danh bạ nhân viên" />
+    <h1 class="dir-cb-page-title">Danh bạ nhân viên</h1>
 
     <div class="dir-cb-toolbar">
       <div class="dir-cb-search">
-        <SearchBar v-model="searchQuery" @search="handleSearch" placeholder="Tìm kiếm nhân viên, SĐT, Email..." />
+        <div class="dir-cb-search-box">
+          <svg class="dir-cb-search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input type="text" class="dir-cb-search-input" v-model="searchQuery" @input="handleSearch(searchQuery)" placeholder="Tìm kiếm nhân viên, SĐT, Email..." />
+        </div>
       </div>
 
       <div class="dir-cb-filters">
@@ -119,10 +124,8 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import DirectoryHeader from '@/components/directory/DirectoryHeader.vue'
-import SearchBar from '@/components/directory/SearchBar.vue'
-import { useEmployeeList } from '@/services/directory/composables/useDirectory.js'
-import { EMPLOYEE_STATUS_LABEL, EMPLOYEE_STATUS_CLASS } from '@/services/directory/constants/status.js'
+import { useEmployeeList } from '@/modules/directory/composables/useDirectory.js'
+import { EMPLOYEE_STATUS_LABEL, EMPLOYEE_STATUS_CLASS } from '@/modules/directory/constants/status.js'
 
 const router = useRouter()
 const {
@@ -171,6 +174,14 @@ const statusClass = (s) => {
   padding: 20px;
 }
 
+.dir-cb-page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+
 .dir-cb-toolbar {
   display: flex;
   align-items: center;
@@ -180,6 +191,39 @@ const statusClass = (s) => {
 }
 
 .dir-cb-search { flex: 1; min-width: 200px; max-width: 380px; }
+
+.dir-cb-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dir-cb-search-icon {
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  color: #94a3b8;
+}
+
+.dir-cb-search-input {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 12px 8px 36px;
+  font-size: 13px;
+  color: #334155;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.dir-cb-search-input:focus { border-color: #2563eb; }
+
+html[data-theme="dark"] .dir-cb-search-input {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
 
 .dir-cb-filters {
   display: flex;

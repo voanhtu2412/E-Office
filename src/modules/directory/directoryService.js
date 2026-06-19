@@ -1,5 +1,5 @@
 /**
- * modules/directory/services/directoryService.js
+ * modules/directory/directoryService.js
  * PROTECTED — Không tự ý thay đổi.
  *
  * Service layer cho module Danh bạ.

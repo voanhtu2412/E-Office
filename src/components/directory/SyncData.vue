@@ -112,8 +112,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { ArrowPathIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline'
-import { syncData } from '@/services/directory/directoryService.js'
-import { SYNC_STATUS, SYNC_STATUS_LABEL } from '@/services/directory/constants/status.js'
+import { syncData } from '@/modules/directory/directoryService.js'
+import { SYNC_STATUS, SYNC_STATUS_LABEL } from '@/modules/directory/constants/status.js'
 import { useDirectoryStore } from '@/stores/directory/directoryStore.js'
 
 const store = useDirectoryStore()

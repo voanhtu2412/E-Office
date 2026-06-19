@@ -83,7 +83,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { mockEmployees } from '@/services/directory/data/mockEmployees.js'
+import { mockEmployees } from '@/modules/directory/data/mockEmployees.js'
 import { useDirectoryStore } from '@/stores/directory/directoryStore.js'
 import { storeToRefs } from 'pinia'
 

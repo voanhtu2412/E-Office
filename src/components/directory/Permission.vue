@@ -111,7 +111,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { PERMISSIONS, ROLE_PERMISSIONS } from '@/services/directory/constants/permissions.js'
+import { PERMISSIONS, ROLE_PERMISSIONS } from '@/modules/directory/constants/permissions.js'
 import { useDirectoryStore } from '@/stores/directory/directoryStore.js'
 import { storeToRefs } from 'pinia'
 
