@@ -1,0 +1,410 @@
+/* Tailwind utils cho riêng module Danh bạ */
+@tailwind components;
+@tailwind utilities;
+
+/* Custom dark mode utilities cho các elements không dùng Tailwind */
+html[data-theme="dark"] .dashboard-page {
+  background-color: var(--bg-main, #1a202c);
+  color: var(--text-dark, #f3f4f6);
+}
+
+html[data-theme="dark"] .card {
+  background-color: #2d3748;
+  border-color: #4a5568;
+}
+
+html[data-theme="dark"] .dashboard-col-left .card {
+  background-color: #2d3748;
+}
+
+html[data-theme="dark"] .section-title {
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] .dept-item:hover:not(.dept-item--active) {
+  background: #4a5568;
+}
+
+html[data-theme="dark"] .emp-action-btn {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] .emp-action-btn:hover {
+  background: #2b6cb0;
+  border-color: #3182ce;
+  color: white;
+}
+
+html[data-theme="dark"] .filter-select, 
+html[data-theme="dark"] .search-input {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] .table-container th {
+  color: #a0aec0;
+  border-color: #4a5568;
+}
+
+html[data-theme="dark"] .table-container td {
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] .hover\:bg-slate-50:hover {
+  background-color: #4a5568;
+}
+
+html[data-theme="dark"] .border-slate-100 {
+  border-color: #4a5568;
+}
+
+html[data-theme="dark"] .bg-white {
+  background-color: #2d3748;
+}
+
+html[data-theme="dark"] .text-slate-800 {
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] .text-slate-600 {
+  color: #cbd5e0;
+}
+
+html[data-theme="dark"] .text-slate-500 {
+  color: #a0aec0;
+}
+
+html[data-theme="dark"] .bg-slate-50 {
+  background-color: #2d3748;
+}
+
+html[data-theme="dark"] .org-mini-node--root {
+  background: #2b6cb0;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] .org-mini-node--green {
+  background: #276749;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] .org-mini-node--orange {
+  background: #9c4221;
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] .modal-container {
+  background: #2d3748;
+}
+html[data-theme="dark"] .modal-header,
+html[data-theme="dark"] .modal-footer {
+  border-color: #4a5568;
+}
+html[data-theme="dark"] .modal-title {
+  color: #e2e8f0;
+}
+html[data-theme="dark"] .modal-close-btn:hover {
+  background: #4a5568;
+  color: #e2e8f0;
+}
+
+
+/* Scoped Preflight cho riêng module danh bạ để không vỡ UI */
+.dashboard-page *, .dashboard-page ::before, .dashboard-page ::after,
+.modal-container *, .modal-container ::before, .modal-container ::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+
+.dashboard-page h1, .dashboard-page h2, .dashboard-page h3, .dashboard-page h4, .dashboard-page h5, .dashboard-page h6, .dashboard-page p,
+.modal-container h1, .modal-container h2, .modal-container h3, .modal-container h4, .modal-container h5, .modal-container h6, .modal-container p {
+  margin: 0;
+}
+
+.dashboard-page button, .modal-container button {
+  background-color: transparent;
+  background-image: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dashboard-page img, .dashboard-page svg,
+.modal-container img, .modal-container svg {
+  display: block;
+  vertical-align: middle;
+}
+
+
+@layer components {
+  /* Page container */
+  .page-container {
+    @apply max-w-7xl mx-auto px-6 py-8;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-white rounded-2xl border border-slate-100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 cursor-pointer;
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+    @apply -translate-y-0.5 border-blue-200;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-active {
+    @apply bg-emerald-50 text-emerald-700;
+  }
+
+  .badge-inactive {
+    @apply bg-slate-100 text-slate-600;
+  }
+
+  .badge-on-leave {
+    @apply bg-amber-50 text-amber-700;
+  }
+
+  /* Section heading */
+  .section-title {
+    @apply text-xl font-semibold text-slate-800 mb-1;
+  }
+
+  .section-desc {
+    @apply text-sm text-slate-500;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-slate-100 my-6;
+  }
+
+  /* Stats number */
+  .stat-number {
+    @apply text-3xl font-bold text-slate-800;
+  }
+
+  .stat-label {
+    @apply text-sm text-slate-500 mt-1;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    @apply flex items-center gap-2 text-sm text-slate-500 mb-6;
+  }
+
+  .breadcrumb-separator {
+    @apply text-slate-300;
+  }
+
+  .breadcrumb-active {
+    @apply text-slate-800 font-medium;
+  }
+
+  /* Table */
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table th {
+    @apply text-left text-xs font-semibold text-slate-500 uppercase tracking-wide px-4 py-3 bg-slate-50 border-b border-slate-100;
+  }
+
+  .data-table td {
+    @apply px-4 py-3.5 border-b border-slate-50 text-sm text-slate-700;
+  }
+
+  .data-table tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .data-table tbody tr {
+    @apply hover:bg-slate-50 transition-colors duration-150;
+  }
+
+  /* Empty state */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-16 text-center;
+  }
+
+  .empty-state-icon {
+    @apply w-16 h-16 text-slate-200 mb-4;
+  }
+
+  .empty-state-title {
+    @apply text-slate-600 font-medium mb-1;
+  }
+
+  .empty-state-desc {
+    @apply text-slate-400 text-sm;
+  }
+}
+
+
+/* Dark mode styles for form elements */
+html[data-theme="dark"] .emp-select,
+html[data-theme="dark"] .modal-container input,
+html[data-theme="dark"] .modal-container select,
+html[data-theme="dark"] .modal-container textarea {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  border-color: #4a5568;
+}
+
+html[data-theme="dark"] .bc-action-btn {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  border-color: #4a5568;
+}
+
+html[data-theme="dark"] .bc-action-btn:hover {
+  background-color: #4a5568;
+}
+
+html[data-theme="dark"] .empty-state-title {
+  color: #e2e8f0;
+}
+
+
+/* Global Dark Mode Overrides for Directory Module */
+html[data-theme="dark"] .dashboard-page .stat-card,
+html[data-theme="dark"] .dashboard-page .card,
+html[data-theme="dark"] .modal-container {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .dashboard-page .text-slate-800,
+html[data-theme="dark"] .dashboard-page .text-slate-700,
+html[data-theme="dark"] .dashboard-page .text-slate-600,
+html[data-theme="dark"] .dashboard-page .text-slate-500,
+html[data-theme="dark"] .modal-container .text-slate-800,
+html[data-theme="dark"] .modal-container .text-slate-700,
+html[data-theme="dark"] .modal-container .text-slate-600,
+html[data-theme="dark"] .modal-container .text-slate-500 {
+  color: #cbd5e1 !important;
+}
+
+/* Department list */
+html[data-theme="dark"] .dept-item {
+  color: #cbd5e1 !important;
+  border-bottom-color: #334155 !important;
+}
+html[data-theme="dark"] .dept-item:hover {
+  background-color: #334155 !important;
+}
+html[data-theme="dark"] .dept-item--active {
+  background-color: #0f172a !important;
+  color: #38bdf8 !important;
+}
+html[data-theme="dark"] .dept-item--active .dept-count {
+  color: #38bdf8 !important;
+}
+
+/* Data Table */
+html[data-theme="dark"] .data-table th {
+  background-color: #0f172a !important;
+  color: #94a3b8 !important;
+  border-bottom-color: #334155 !important;
+}
+html[data-theme="dark"] .data-table td {
+  border-bottom-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+html[data-theme="dark"] .data-table tbody tr:hover {
+  background-color: #334155 !important;
+}
+
+/* Action Buttons */
+html[data-theme="dark"] .emp-action-btn,
+html[data-theme="dark"] .dashboard-col-right button.border-slate-100 {
+  background-color: #1e293b !important;
+  border-color: #475569 !important;
+  color: #e2e8f0 !important;
+}
+html[data-theme="dark"] .emp-action-btn:hover,
+html[data-theme="dark"] .dashboard-col-right button.border-slate-100:hover {
+  background-color: #334155 !important;
+  border-color: #64748b !important;
+}
+html[data-theme="dark"] .emp-action-btn--primary {
+  color: #38bdf8 !important;
+  border-color: #0c4a6e !important;
+  background-color: #0f172a !important;
+}
+html[data-theme="dark"] .emp-action-btn--primary:hover {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+/* Filter selects */
+html[data-theme="dark"] .filter-select,
+html[data-theme="dark"] .search-input {
+  background-color: #0f172a !important;
+  border-color: #475569 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Modals extra */
+html[data-theme="dark"] .modal-header {
+  border-bottom-color: #334155 !important;
+}
+html[data-theme="dark"] .modal-footer {
+  border-top-color: #334155 !important;
+}
+
+/* Org mini nodes */
+html[data-theme="dark"] .org-mini-node--root {
+  background-color: #1e3a8a !important;
+  color: #bfdbfe !important;
+}
+html[data-theme="dark"] .org-mini-node--green {
+  background-color: #14532d !important;
+  color: #bbf7d0 !important;
+}
+html[data-theme="dark"] .org-mini-node--orange {
+  background-color: #7c2d12 !important;
+  color: #fed7aa !important;
+}
+
+
+html[data-theme="dark"] .modal-title {
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] .modal-close-btn {
+  color: #94a3b8 !important;
+}
+html[data-theme="dark"] .modal-close-btn:hover {
+  background-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+
+/* Action Buttons Redesign */
+.emp-action-btn {
+  border-radius: 6px !important;
+  padding: 6px 12px !important;
+  transition: all 0.2s ease !important;
+  font-weight: 500 !important;
+}
+.emp-action-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+html[data-theme="dark"] .emp-action-btn:hover {
+  background-color: #334155 !important; /* slate-700 */
+}
+

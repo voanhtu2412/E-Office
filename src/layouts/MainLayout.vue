@@ -296,6 +296,9 @@ const pageTitle = computed(() => {
   if (route.name === 'Notifications') {
     return t('i18nCommon.header.notifications');
   }
+  if (route.path.startsWith('/directory') || route.name === 'Directory') {
+    return 'Danh bạ';
+  }
   return (route.meta?.title as string) || (route.name as string) || 'OSPACE';
 });
 
@@ -362,6 +365,20 @@ const sidebarModules = computed(() => [
         ]
       },
     ],
+  },
+  {
+    key: 'directory',
+    title: 'Danh bạ',
+    icon: 'fa-regular fa-address-book',
+    items: [
+      {
+        label: 'Danh bạ điện tử',
+        icon: 'fa-regular fa-address-card',
+        children: [
+          { label: 'Danh sách cán bộ', path: '/directory' }
+        ]
+      }
+    ]
   },
   {
     key: 'work',
