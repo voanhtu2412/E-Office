@@ -493,7 +493,7 @@ const sidebarModules = computed(() => [
         label: t('i18nDashboard.dashboard.submenu.cal_rooms'),
         icon: 'fa-solid fa-door-open',
         children: [
-          t('i18nDashboard.dashboard.submenu_children.available_rooms'),
+          { label: t('i18nDashboard.dashboard.submenu_children.available_rooms'), path: '/meeting' },
           t('i18nDashboard.dashboard.submenu_children.book_a_room'),
           t('i18nDashboard.dashboard.submenu_children.booking_history')
         ]

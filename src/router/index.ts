@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import MainLayout from '@/layouts/MainLayout.vue';
 import DashboardPage from '@/pages/DashboardPage.vue';
+import MeetingPage from '@/pages/MeetingPage.vue';
 // @ts-ignore
 import NotificationModule from '@/modules/notifications/NotificationModule.vue';
 
@@ -19,6 +20,11 @@ const routes = [
         path: 'notifications',
         name: 'Notifications',
         component: NotificationModule
+      },
+      {
+        path: 'meeting',
+        name: 'Meeting',
+        component: MeetingPage
       }
     ]
   }
