@@ -266,7 +266,7 @@ function getAIResponse(input: string): string {
   align-items: center;
   justify-content: center;
   color: $text-light;
-  font-size: 10px;
+  font-size: 11.5px;
   cursor: pointer;
   z-index: 10000;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -346,7 +346,7 @@ function getAIResponse(input: string): string {
     align-items: center;
     justify-content: center;
     color: #0a65ff;
-    font-size: 14px;
+    font-size: 16.1px;
     font-weight: 700;
     line-height: 1;
     padding: 0;
@@ -368,7 +368,7 @@ function getAIResponse(input: string): string {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 16.1px;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
@@ -419,7 +419,7 @@ function getAIResponse(input: string): string {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 18.4px;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.2);
 
@@ -437,13 +437,13 @@ function getAIResponse(input: string): string {
 
   .ai-info {
     h3 {
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 700;
       margin: 0;
       letter-spacing: 0.3px;
     }
     span {
-      font-size: 10px;
+      font-size: 11.5px;
       opacity: 0.85;
       font-weight: 500;
     }
@@ -512,7 +512,7 @@ function getAIResponse(input: string): string {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 13.8px;
       flex-shrink: 0;
     }
 
@@ -527,7 +527,7 @@ function getAIResponse(input: string): string {
     border: 1px solid rgba(10, 101, 255, 0.05);
 
     p {
-      font-size: 12.5px;
+      font-size: 14.4px;
       line-height: 1.45;
       color: $text-dark;
       margin: 0;
@@ -536,7 +536,7 @@ function getAIResponse(input: string): string {
     }
 
     .msg-time {
-      font-size: 9px;
+      font-size: 10.4px;
       color: $text-muted;
       display: block;
       text-align: right;
@@ -581,7 +581,7 @@ function getAIResponse(input: string): string {
     background-color: $bg-light-gray;
     border-radius: 20px;
     padding: 8px 16px;
-    font-size: 12.5px;
+    font-size: 14.4px;
     outline: none;
     transition: all 0.2s ease;
 
@@ -602,7 +602,7 @@ function getAIResponse(input: string): string {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 13.8px;
     cursor: pointer;
     transition: all 0.2s ease;
 

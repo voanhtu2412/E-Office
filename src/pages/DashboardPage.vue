@@ -332,7 +332,7 @@ import DashboardPendingTasks from "@/components/dashboard/DashboardPendingTasks.
     background-color: $bg-light-gray;
     border: 1px solid $border-light;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 13.8px;
     font-weight: 600;
     color: $text-medium;
     cursor: pointer;
@@ -343,7 +343,7 @@ import DashboardPendingTasks from "@/components/dashboard/DashboardPendingTasks.
     }
 
     i {
-      font-size: 9px;
+      font-size: 10.4px;
       color: $text-muted;
     }
   }
@@ -430,7 +430,7 @@ import DashboardPendingTasks from "@/components/dashboard/DashboardPendingTasks.
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 18.4px;
       flex-shrink: 0;
 
       &.icon-blue {
@@ -457,7 +457,7 @@ import DashboardPendingTasks from "@/components/dashboard/DashboardPendingTasks.
       min-width: 0;
       
       .label {
-        font-size: 11.5px;
+        font-size: 13.2px;
         color: $text-light;
         font-weight: 500;
         white-space: nowrap;
@@ -471,13 +471,13 @@ import DashboardPendingTasks from "@/components/dashboard/DashboardPendingTasks.
         gap: 6px;
 
         .val {
-          font-size: 16px;
+          font-size: 18.4px;
           font-weight: 700;
           color: $text-dark;
         }
 
         .trend {
-          font-size: 10px;
+          font-size: 11.5px;
           font-weight: 700;
           
           &.positive {
@@ -499,7 +499,7 @@ import DashboardPendingTasks from "@/components/dashboard/DashboardPendingTasks.
         justify-content: space-between;
         align-items: center;
         gap: 8px;
-        font-size: 11.5px;
+        font-size: 13.2px;
 
         .label {
           color: $text-light;
@@ -547,7 +547,7 @@ import DashboardPendingTasks from "@/components/dashboard/DashboardPendingTasks.
     gap: 10px;
 
     .date-lbl {
-      font-size: 12px;
+      font-size: 13.8px;
       color: $text-light;
       font-weight: 600;
     }
@@ -562,7 +562,7 @@ import DashboardPendingTasks from "@/components/dashboard/DashboardPendingTasks.
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: 11.5px;
       cursor: pointer;
       transition: all 0.2s ease;
 

@@ -149,7 +149,7 @@ onUnmounted(() => {
   }
 
   .label {
-    font-size: 11px;
+    font-size: 12.6px;
     color: $text-light;
     font-weight: 500;
     margin-top: 4px;
@@ -172,7 +172,7 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 13px;
+  font-size: 15px;
   color: $text-medium;
   gap: 12px;
   min-width: 0;

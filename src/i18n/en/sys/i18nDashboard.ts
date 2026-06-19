@@ -194,10 +194,43 @@ export default {
     schedule: {
       item1_title: "Weekly Briefing",
       item1_loc: "Meeting Room A - 3rd Floor",
-      item2_title: "Review OSPACE Project",
+      item2_title: "OSPACE Project Review",
       item2_loc: "IT Room",
-      item3_title: "eOffice Platform Training",
+      item3_title: "eOffice Usage Training",
       item3_loc: "Online Meeting"
+    }
+  },
+  notification_page: {
+    stats: {
+      total: "Total Notifications",
+      unread: "Unread",
+      today: "Today",
+      upcoming: "Upcoming",
+      read: "Read"
+    },
+    filters: {
+      search: "Search title, content, sender...",
+      all_types: "All types",
+      all_depts: "All departments",
+      all_status: "All status",
+      settings: "Notification settings"
+    },
+    table: {
+      title: "TITLE",
+      type: "TYPE",
+      sender: "SENDER",
+      time: "TIME",
+      status: "STATUS",
+      action: "ACTIONS"
+    },
+    sidebar: {
+      quick_filters: "Quick Filters",
+      all_notifs: "All notifications",
+      priority_title: "Priority Notifications",
+      view_all: "View all",
+      support_title: "Admin & Support Dept",
+      support_desc: "We are always ready to help!",
+      support_btn: "Send request"
     }
   }
 };

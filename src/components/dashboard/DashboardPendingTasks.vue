@@ -164,7 +164,7 @@ const tasks = ref<PendingTask[]>([
   }
 
   i {
-    font-size: 14px;
+    font-size: 16.1px;
   }
 }
 
@@ -251,7 +251,7 @@ const tasks = ref<PendingTask[]>([
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 17.3px;
   flex-shrink: 0;
 
   &.theme-blue {
@@ -282,7 +282,7 @@ const tasks = ref<PendingTask[]>([
   min-width: 0;
 
   .task-name {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     color: $text-dark;
     white-space: nowrap;
@@ -291,7 +291,7 @@ const tasks = ref<PendingTask[]>([
   }
 
   .task-desc {
-    font-size: 11px;
+    font-size: 12.6px;
     color: $text-light;
     font-weight: 500;
     margin-top: 2px;
@@ -312,7 +312,7 @@ const tasks = ref<PendingTask[]>([
 }
 
 .task-badge {
-  font-size: 11px;
+  font-size: 12.6px;
   font-weight: 700;
   padding: 2px 8px;
   border-radius: 10px;
@@ -335,7 +335,7 @@ const tasks = ref<PendingTask[]>([
 }
 
 .action-btn {
-  font-size: 11px;
+  font-size: 12.6px;
   font-weight: 700;
   padding: 5px 10px;
   width: 84px;
@@ -358,7 +358,7 @@ const tasks = ref<PendingTask[]>([
   text-overflow: ellipsis;
 
   i {
-    font-size: 8px;
+    font-size: 9.2px;
     transition: transform 0.2s ease;
   }
 
@@ -451,7 +451,7 @@ const tasks = ref<PendingTask[]>([
     font-size: 0 !important;
 
     i {
-      font-size: 11px !important;
+      font-size: 12.6px !important;
       color: $text-muted !important;
     }
   }

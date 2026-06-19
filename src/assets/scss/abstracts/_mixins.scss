@@ -1,0 +1,104 @@
+@use "_variables.scss" as *;
+// Media Queries
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (max-width: #{$breakpoint-large}) {
+    @content;
+  }
+}
+
+// Layout Flex helpers
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-align($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+}
+
+// Text Truncation
+@mixin truncate-single {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin truncate-multi($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Transitions
+@mixin transition-smooth($properties...) {
+  @if length($properties) == 0 {
+    transition: all 0.2s ease-in-out;
+  } @else {
+    $transitions: ();
+    @each $prop in $properties {
+      $transitions: append($transitions, $prop 0.2s ease-in-out, comma);
+    }
+    transition: $transitions;
+  }
+}
+
+// Scrollbars styling
+@mixin custom-scrollbar($width: 6px, $thumb-color: $color-border, $track-color: transparent) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: $border-radius-sm;
+    
+    &:hover {
+      background: darken($thumb-color, 10%);
+    }
+  }
+}
+
+// Card Style
+@mixin card-style {
+  background-color: $color-bg-card;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  border: 1px solid $color-border;
+  padding: $spacing-md;
+}

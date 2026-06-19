@@ -71,7 +71,7 @@ withDefaults(defineProps<{
   }
 
   .timeline-time {
-    font-size: 12.5px;
+    font-size: 14.4px;
     font-weight: 700;
     color: $text-light;
     width: 35px;
@@ -113,7 +113,7 @@ withDefaults(defineProps<{
       padding-right: 8px;
 
       h4 {
-        font-size: 13px;
+        font-size: 15px;
         font-weight: 700;
         color: $text-dark;
         margin: 0;
@@ -123,7 +123,7 @@ withDefaults(defineProps<{
       }
 
       p {
-        font-size: 11px;
+        font-size: 12.6px;
         color: $text-light;
         margin: 4px 0 0 0;
         display: flex;
@@ -134,14 +134,14 @@ withDefaults(defineProps<{
         text-overflow: ellipsis;
 
         i {
-          font-size: 10px;
+          font-size: 11.5px;
           color: $text-muted;
         }
       }
     }
 
     .status-badge {
-      font-size: 10px;
+      font-size: 11.5px;
       font-weight: 700;
       padding: 4px 10px;
       border-radius: 20px;

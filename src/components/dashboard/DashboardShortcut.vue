@@ -46,7 +46,7 @@ defineProps<{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 20.7px;
     color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
     position: relative;
@@ -64,7 +64,7 @@ defineProps<{
       right: -3px;
       background-color: $danger-color;
       color: #ffffff;
-      font-size: 9px;
+      font-size: 10.4px;
       font-weight: 700;
       width: 16px;
       height: 16px;
@@ -78,7 +78,7 @@ defineProps<{
   }
 
   span {
-    font-size: 12px;
+    font-size: 13.8px;
     color: $text-medium;
     font-weight: 600;
     line-height: 1.25;

@@ -49,7 +49,7 @@ defineProps<{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 18.4px;
     flex-shrink: 0;
 
     &.icon-blue {
@@ -78,7 +78,7 @@ defineProps<{
     flex: 1;
 
     .notify-title {
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 700;
       color: $text-dark;
       margin: 0;
@@ -100,7 +100,7 @@ defineProps<{
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 11px;
+      font-size: 12.6px;
       color: $text-muted;
       margin-top: 3px;
       min-width: 0;
@@ -114,7 +114,7 @@ defineProps<{
       }
 
       .dot-separator {
-        font-size: 8px;
+        font-size: 9.2px;
       }
     }
   }

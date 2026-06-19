@@ -94,7 +94,7 @@ defineProps<{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 23px;
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     flex-shrink: 0;
@@ -103,7 +103,7 @@ defineProps<{
       width: 46px;
       height: 46px;
       border-radius: 12px;
-      font-size: 18px;
+      font-size: 20.7px;
     }
   }
 
@@ -113,7 +113,7 @@ defineProps<{
     min-width: 0;
 
     h3 {
-      font-size: 13px;
+      font-size: 15px;
       color: $text-light;
       font-weight: 500;
       margin: 0 0 6px 0;
@@ -135,7 +135,7 @@ defineProps<{
     }
 
     .view-all-link {
-      font-size: 11px;
+      font-size: 12.6px;
       color: $primary-color;
       text-decoration: none;
       font-weight: 600;
@@ -153,18 +153,18 @@ defineProps<{
       flex-wrap: wrap;
 
       .value {
-        font-size: 26px;
+        font-size: 29.9px;
         font-weight: 700;
         color: $text-dark;
         line-height: 1;
 
         @media (max-width: 600px) {
-          font-size: 24px;
+          font-size: 27.6px;
         }
       }
 
       .trend-text {
-        font-size: 11.5px;
+        font-size: 13.2px;
         color: $text-muted;
         font-weight: 500;
 
@@ -179,7 +179,7 @@ defineProps<{
         }
 
         .trend-icon {
-          font-size: 9px;
+          font-size: 10.4px;
           margin-right: 2px;
         }
       }

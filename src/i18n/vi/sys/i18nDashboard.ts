@@ -199,5 +199,38 @@ export default {
       item3_title: "Đào tạo sử dụng eOffice",
       item3_loc: "Online Meeting"
     }
+  },
+  notification_page: {
+    stats: {
+      total: "Tổng thông báo",
+      unread: "Chưa đọc",
+      today: "Hôm nay",
+      upcoming: "Sắp tới",
+      read: "Đã đọc"
+    },
+    filters: {
+      search: "Tìm kiếm tiêu đề, nội dung, người gửi...",
+      all_types: "Tất cả loại thông báo",
+      all_depts: "Tất cả phòng ban",
+      all_status: "Tất cả trạng thái",
+      settings: "Cài đặt thông báo"
+    },
+    table: {
+      title: "TIÊU ĐỀ",
+      type: "LOẠI THÔNG BÁO",
+      sender: "NGƯỜI GỬI",
+      time: "THỜI GIAN",
+      status: "TRẠNG THÁI",
+      action: "THAO TÁC"
+    },
+    sidebar: {
+      quick_filters: "Bộ lọc nhanh",
+      all_notifs: "Tất cả thông báo",
+      priority_title: "Thông báo ưu tiên",
+      view_all: "Xem tất cả",
+      support_title: "Bộ phận Hành chính - Quản trị",
+      support_desc: "Chúng tôi luôn sẵn sàng hỗ trợ!",
+      support_btn: "Gửi yêu cầu hỗ trợ"
+    }
   }
 };
