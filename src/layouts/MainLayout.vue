@@ -83,12 +83,14 @@
                   <div v-if="expandedActionKey === item.label" class="module-subactions">
                     <button
                       v-for="subItem in item.children"
-                      :key="subItem"
+                      :key="getLabel(subItem)"
                       type="button"
                       class="module-subaction"
+                      :class="{ 'active': getPath(subItem) && route.path === getPath(subItem) }"
+                      @click="handleSubActionClick(subItem)"
                     >
                       <span class="subaction-dot"></span>
-                      {{ subItem }}
+                      <span class="subaction-text">{{ getLabel(subItem) }}</span>
                     </button>
                   </div>
                 </Transition>
@@ -128,7 +130,7 @@
 
           <!-- Quick Icons -->
           <div class="action-icons">
-            <div class="icon-wrapper badge-active" role="button" tabindex="0" :title="$t('i18nCommon.header.notifications')" :aria-label="$t('i18nCommon.header.notifications')">
+            <div class="icon-wrapper badge-active" role="button" tabindex="0" :title="$t('i18nCommon.header.notifications')" :aria-label="$t('i18nCommon.header.notifications')" @click="$router.push('/notifications')">
               <i class="fa-regular fa-bell"></i>
               <span class="header-badge">8</span>
             </div>
@@ -273,19 +275,26 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import imageAvatar from '@/assets/image/imageAvatar.png';
 import AiChatBubble from '@/components/AiChatBubble.vue';
 import { isAiHidden, setAiHidden } from '@/utils/aiState';
 
 const route = useRoute();
+const router = useRouter();
 const { locale, t } = useI18n();
+
+const getLabel = (subItem: any): string => typeof subItem === 'string' ? subItem : subItem.label;
+const getPath = (subItem: any): string | undefined => typeof subItem === 'string' ? undefined : subItem.path;
 
 const isDashboardRoute = computed(() => route.path === '/dashboard' || route.name === 'Dashboard');
 
 const pageTitle = computed(() => {
   if (isDashboardRoute.value) {
     return `${t('i18nDashboard.dashboard.hello')}, Nguyễn Văn An 👋`;
+  }
+  if (route.name === 'Notifications') {
+    return t('i18nCommon.header.notifications');
   }
   return (route.meta?.title as string) || (route.name as string) || 'OSPACE';
 });
@@ -329,7 +338,7 @@ const sidebarModules = computed(() => [
         label: t('i18nDashboard.dashboard.overview'),
         icon: 'fa-solid fa-chart-pie',
         children: [
-          t('i18nDashboard.dashboard.submenu_children.personal_dashboard'),
+          { label: t('i18nDashboard.dashboard.submenu_children.personal_dashboard'), path: '/dashboard' },
           t('i18nDashboard.dashboard.submenu_children.by_dept'),
           t('i18nDashboard.dashboard.submenu_children.by_week')
         ]
@@ -637,6 +646,15 @@ const toggleModuleAction = (label: string) => {
   expandedActionKey.value = expandedActionKey.value === label ? null : label;
 };
 
+const handleSubActionClick = (subItem: any) => {
+  if (subItem.path) {
+    router.push(subItem.path);
+    if (window.innerWidth <= 1024) {
+      sidebarOpen.value = false;
+    }
+  }
+};
+
 const toggleProfileMenu = () => {
   profileOpen.value = !profileOpen.value;
 };
@@ -854,7 +872,7 @@ onUnmounted(() => {
     
     .logo-icon-hex {
       color: #ffffff;
-      font-size: 20px;
+      font-size: 23px;
     }
   }
 
@@ -902,7 +920,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   color: $text-medium;
-  font-size: 17px;
+  font-size: 19.5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
   transition: all 0.2s ease;
 
@@ -928,7 +946,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 25.3px;
   transition: all 0.2s ease;
 
   &:hover,
@@ -957,7 +975,7 @@ onUnmounted(() => {
     background-color: $danger-color;
     color: #ffffff;
     border: 2px solid #ffffff;
-    font-size: 9px;
+    font-size: 10.4px;
     font-weight: 800;
     display: flex;
     align-items: center;
@@ -991,7 +1009,7 @@ onUnmounted(() => {
     h2 {
       margin: 0;
       color: $text-dark;
-      font-size: 14.5px;
+      font-size: 16.7px;
       font-weight: 800;
       text-transform: uppercase;
     }
@@ -1049,7 +1067,7 @@ onUnmounted(() => {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    font-size: 14.5px;
+    font-size: 16.7px;
     font-weight: 600;
     transition: all 0.2s ease;
 
@@ -1073,12 +1091,12 @@ onUnmounted(() => {
 
     i {
       flex-shrink: 0;
-      font-size: 16px;
+      font-size: 18.4px;
     }
 
     .action-chevron {
       color: $text-muted;
-      font-size: 11px;
+      font-size: 12.6px;
       transition: transform 0.2s ease;
     }
   }
@@ -1103,7 +1121,7 @@ onUnmounted(() => {
     align-items: center;
     gap: 8px;
     text-align: left;
-    font-size: 13.5px;
+    font-size: 15.5px;
     font-weight: 600;
     transition: all 0.2s ease;
 
@@ -1114,12 +1132,29 @@ onUnmounted(() => {
       outline: none;
     }
 
+    &.active {
+      background-color: rgba(10, 101, 255, 0.08);
+      color: $primary-color;
+      font-weight: 700;
+      
+      .subaction-dot {
+        background-color: $primary-color;
+      }
+    }
+
     .subaction-dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background-color: rgba(10, 101, 255, 0.35);
       flex-shrink: 0;
+    }
+
+    .subaction-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
     }
   }
 }
@@ -1145,13 +1180,13 @@ onUnmounted(() => {
 
 .subactions-enter-active,
 .subactions-leave-active {
-  max-height: 180px;
+  max-height: 400px;
   opacity: 1;
   transform: translateY(0);
   transition:
-    max-height 0.26s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.18s ease,
-    transform 0.2s ease;
+    max-height 0.35s ease-in-out,
+    opacity 0.25s ease-in-out,
+    transform 0.3s ease;
 }
 
 .subactions-enter-from,
@@ -1163,7 +1198,7 @@ onUnmounted(() => {
 
 .subactions-enter-to,
 .subactions-leave-from {
-  max-height: 180px;
+  max-height: 400px;
   opacity: 1;
   transform: translateY(0);
 }
@@ -1178,7 +1213,7 @@ onUnmounted(() => {
     display: none;
     
     .brand {
-      font-size: 16px;
+      font-size: 18.4px;
       font-weight: 800;
       color: #0a65ff;
       letter-spacing: 0.5px;
@@ -1186,7 +1221,7 @@ onUnmounted(() => {
     }
 
     .sub-brand {
-      font-size: 11px;
+      font-size: 12.6px;
       color: $text-light;
       font-weight: 500;
     }
@@ -1217,7 +1252,7 @@ onUnmounted(() => {
       border-radius: 8px;
       text-decoration: none;
       color: $text-medium;
-      font-size: 13.5px;
+      font-size: 15.5px;
       font-weight: 500;
       transition: background-color 0.2s ease, color 0.2s ease, padding 0.3s ease, justify-content 0.3s ease;
       cursor: pointer;
@@ -1233,7 +1268,7 @@ onUnmounted(() => {
     }
 
     .nav-icon {
-      font-size: 16px;
+      font-size: 18.4px;
       width: 24px;
       color: #8a99ad;
       transition: color 0.2s ease;
@@ -1244,7 +1279,7 @@ onUnmounted(() => {
     }
 
     .badge {
-      font-size: 10px;
+      font-size: 11.5px;
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 10px;
@@ -1257,7 +1292,7 @@ onUnmounted(() => {
     }
 
     .submenu-chevron {
-      font-size: 10px;
+      font-size: 11.5px;
       color: $text-muted;
       margin-left: auto;
       transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1293,7 +1328,7 @@ onUnmounted(() => {
       .submenu-link {
         display: block;
         padding: 6px 12px;
-        font-size: 12.5px;
+        font-size: 14.4px;
         color: $text-medium;
         text-decoration: none;
         border-radius: 6px;
@@ -1331,7 +1366,7 @@ onUnmounted(() => {
     margin-bottom: 20px;
 
     .quick-title {
-      font-size: 11px;
+      font-size: 12.6px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: #8a99ad;
@@ -1366,7 +1401,7 @@ onUnmounted(() => {
         align-items: center;
         justify-content: center;
         color: $text-medium;
-        font-size: 15px;
+        font-size: 17.3px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
         transition: all 0.2s ease;
 
@@ -1379,7 +1414,7 @@ onUnmounted(() => {
       }
 
       span {
-        font-size: 10px;
+        font-size: 11.5px;
         color: $text-light;
         font-weight: 500;
       }
@@ -1457,7 +1492,7 @@ onUnmounted(() => {
       background-color: $bg-white;
       border: 1px solid rgba(10, 101, 255, 0.08);
       color: $text-medium;
-      font-size: 16px;
+      font-size: 18.4px;
       cursor: pointer;
       transition: all 0.2s ease;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
@@ -1479,7 +1514,7 @@ onUnmounted(() => {
       min-width: 0;
 
       h1 {
-        font-size: 20px;
+        font-size: 23px;
         font-weight: 800;
         color: $text-dark;
         margin: 0;
@@ -1489,7 +1524,7 @@ onUnmounted(() => {
       }
 
       .current-date {
-        font-size: 12px;
+        font-size: 13.8px;
         color: $text-light;
         margin: 4px 0 0 0;
         font-weight: 500;
@@ -1497,11 +1532,11 @@ onUnmounted(() => {
 
       @media (max-width: 600px) {
         h1 {
-          font-size: 17px;
+          font-size: 19.5px;
         }
 
         .current-date {
-          font-size: 11px;
+          font-size: 12.6px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -1544,7 +1579,7 @@ onUnmounted(() => {
         border-radius: 20px;
         border: 1px solid $border-light;
         background-color: $bg-white;
-        font-size: 13px;
+        font-size: 15px;
         font-family: inherit;
         outline: none;
         transition: all 0.2s ease;
@@ -1562,7 +1597,7 @@ onUnmounted(() => {
         right: 14px;
         transform: translateY(-50%);
         color: $text-muted;
-        font-size: 13px;
+        font-size: 15px;
         pointer-events: none;
       }
     }
@@ -1589,7 +1624,7 @@ onUnmounted(() => {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 16px;
+        font-size: 18.4px;
         color: $text-medium;
         cursor: pointer;
         position: relative;
@@ -1612,7 +1647,7 @@ onUnmounted(() => {
           height: 16px;
           background-color: $danger-color;
           color: #ffffff;
-          font-size: 9px;
+          font-size: 10.4px;
           font-weight: 700;
           border-radius: 50%;
           display: flex;
@@ -1725,14 +1760,14 @@ onUnmounted(() => {
         min-width: 0;
 
         strong {
-          font-size: 14px;
+          font-size: 16.1px;
           color: $text-dark;
           line-height: 1.2;
         }
 
         span,
         small {
-          font-size: 11.5px;
+          font-size: 13.2px;
           color: $text-light;
           white-space: nowrap;
           overflow: hidden;
@@ -1746,7 +1781,7 @@ onUnmounted(() => {
 
       .section-title {
         margin-bottom: 8px;
-        font-size: 11px;
+        font-size: 12.6px;
         font-weight: 800;
         color: $text-muted;
         text-transform: uppercase;
@@ -1769,12 +1804,12 @@ onUnmounted(() => {
       border-radius: 10px;
       background-color: $bg-white;
       color: $text-medium;
-      font-size: 12px;
+      font-size: 13.8px;
       font-weight: 700;
       transition: all 0.2s ease;
 
       span {
-        font-size: 10px;
+        font-size: 11.5px;
         color: $primary-color;
       }
 
@@ -1804,12 +1839,12 @@ onUnmounted(() => {
       border-radius: 10px;
       background-color: $bg-white;
       color: $text-medium;
-      font-size: 12px;
+      font-size: 13.8px;
       font-weight: 700;
       transition: all 0.2s ease;
 
       i {
-        font-size: 13px;
+        font-size: 15px;
         color: $text-light;
       }
 
@@ -1845,7 +1880,7 @@ onUnmounted(() => {
         border-radius: 10px;
         background-color: transparent;
         color: $text-medium;
-        font-size: 13px;
+        font-size: 15px;
         font-weight: 600;
         text-align: left;
         transition: all 0.2s ease;
